@@ -1,14 +1,16 @@
 import { getCustomRepository } from "typeorm";
 import UsersRepository from "../repositories/UsersReporitory";
-import { IUserCredentials } from "../../utils/interfaces";
+import { IUser } from "../../utils/interfaces";
+// import { AppError } from "../../utils/errors";
 
 export default class CreateUserService {
-    async execute({ name, email, isAdmin }: IUserCredentials) {
+    async execute({ name, email, isAdmin }: IUser) {
         const usersRepository = getCustomRepository(UsersRepository);
 
-        const user = await usersRepository.findOne({ email });
+        const checkUserExists = await usersRepository.findOne({ email });
 
-        if (user) {
+        if (checkUserExists) {
+            // throw new AppError("Email address already in use");
             throw new Error("Email address already in use");
         }
 

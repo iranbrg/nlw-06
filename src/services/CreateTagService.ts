@@ -1,5 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import TagsRepository from "../repositories/TagsRepository";
+import { AppError } from "../utils/errors";
 
 interface ITagRequest {
     name: string;
@@ -12,7 +13,7 @@ export default class CreateTagService {
         const checkTagExists = await tagsRepository.findOne({ name });
 
         if (checkTagExists) {
-            throw new Error("A tag with this name already exists");
+            throw new AppError("A tag with this name already exists");
         }
 
         const newTag = await tagsRepository.createAndSave({ name });

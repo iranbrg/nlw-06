@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from "typeorm";
-import { ITag } from "../../utils/interfaces";
+import { ITag } from "../utils/interfaces";
 import Tags from "../models/Tags";
 
 @EntityRepository(Tags)

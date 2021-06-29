@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import UsersRepository from "../repositories/UsersReporitory";
-import { IUser } from "../../utils/interfaces";
-import { AppError } from "../../utils/errors";
+import { IUser } from "../utils/interfaces";
+import { AppError } from "../utils/errors";
 import { hash } from "bcryptjs";
 
 export default class CreateUserService {

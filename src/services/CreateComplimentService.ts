@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
-import { AppError } from "../../utils/errors";
-import { ICompliment } from "../../utils/interfaces";
+import { AppError } from "../utils/errors";
+import { ICompliment } from "../utils/interfaces";
 import ComplimentsRepository from "../repositories/ComplimentsRepository";
 import UsersRepository from "../repositories/UsersReporitory";
 
@@ -21,7 +21,6 @@ export default class CreateComplimentService {
             throw new AppError("User doesn't exist");
         }
 
-        console.log("THIS SHOULD NOT RUN");
         const compliment = complimentsRepository.create({
             userSender,
             userReceiver,
